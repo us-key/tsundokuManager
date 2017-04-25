@@ -1,0 +1,14 @@
+<h1>Book#index</h1>
+<p>Find me in app/views/book/index.html.erb</p>
+<%if @books.present?%>
+  <p>登録数：<%=@books.count%></p>
+  <table>
+    <thead>
+      <th>タイトル</th><th>著者</th><th>ISBN</th>
+    </thead>
+    <tbody>
+      <%=render @books%>
+    </tbody>
+  </table>
+<%end%>
+<%=link_to "登録する本を探す", 'books/search'%>
