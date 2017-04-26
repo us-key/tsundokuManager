@@ -4,6 +4,8 @@ class BooksController < ApplicationController
   end
 
   def display_search
+  end
 
+  def search
   end
 end
