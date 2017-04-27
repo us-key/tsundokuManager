@@ -1,0 +1,9 @@
+var searchResultHtml = "";
+var count = 0;
+<%if @books.present?%>
+  searchResultHtml = '<%=j render :partial => "books_searched", :collections => @books%>';
+  count = <%=@books.length%>
+<%end%>
+$('#search_result').html(searchResultHtml);
+$('#search_result_count').html(count);
+$('#total_count').html("/" + <%=@totalCount%> + "件");

@@ -1,16 +1,14 @@
-<%= form_tag('book/search', :remote => true) do%>
+<%= form_tag('/books/search', :remote => true) do%>
   <table id="post-form">
     <tr>
       <td id="input-title">
         <div class="field">
-          <%=label_tag(:title)%>
-          <%=text_field_tag(:title, "", :class => 'input-sm', :tabindex => '1')%>
+          <%=text_field_tag(:book, "", :name => 'title', :class => 'input-sm', :tabindex => '1')%>
         </div>
       </td>
       <td id="input-author">
         <div class="field">
-          <%=label_tag(:author)%>
-          <%=text_field_tag(:author, "", :class => 'input-sm', :tabindex => '2')%>
+          <%=text_field_tag(:book, "", :name => 'author', :class => 'input-sm', :tabindex => '2')%>
         </div>
       </td>
       <td id="submit-post">
