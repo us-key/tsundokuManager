@@ -4,6 +4,8 @@ class CreateBooks < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :author
       t.string :isbn
+      t.string :image_url
+      t.string :url
 
       t.timestamps
     end

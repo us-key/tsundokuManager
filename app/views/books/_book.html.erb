@@ -1,5 +1,8 @@
 <tr id="book-<%=book.id%>">
   <td>
+    <%=link_to (image_tag(book.image_url, style: "width: 35px;height: 50px;display: inline-block;")), book.url%>
+  </td>
+  <td>
     <%=book.title%>
   </td>
   <td>
@@ -8,4 +11,10 @@
   <td>
     <%=book.isbn%>
   </td>
+  <td>
+    <%book.statuses.each do |status|%>
+      <p>登録から<%=(Time.now - status.created_at).to_i/(60*60*24)%>日</p>
+    <%end%>
+  </td>
+  </div>
 </tr>

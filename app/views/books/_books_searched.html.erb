@@ -1,7 +1,30 @@
 <%@books.each do |book|%>
   <div class="list">
-    <%=link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url%>
+    <%=link_to (image_tag(book.image_url, style: "width: 35px;height: 50px;display: inline-block;")), book.url%>
     <%=book.title%>
     <%=book.author%>
+    <%=book.isbn%>
+    <%=link_to '気になる', books_create_path(
+      :title => book.title,
+      :author => book.author,
+      :isbn => book.isbn,
+      :image_url => book.image_url,
+      :url => book.url,
+      :status => 0), # 気になる
+      :method => :post,
+      data: {confirm: "本棚に「気になる」登録します."},
+      class: 'register_book',
+      remote: true%>
+    <%=link_to '購入済', books_create_path(
+      :title => book.title,
+      :author => book.author,
+      :isbn => book.isbn,
+      :image_url => book.image_url,
+      :url => book.url,
+      :status => 3), # 購入済
+      :method => :post,
+      data: {confirm: "本棚に「購入済」登録します."},
+      class: 'register_book',
+      remote: true%>
   </div>
 <%end%>
