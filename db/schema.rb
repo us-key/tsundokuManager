@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425092149) do
+ActiveRecord::Schema.define(version: 20170425000023) do
 
   create_table "books", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "isbn"
     t.string   "title"
     t.string   "author"
-    t.string   "isbn"
     t.string   "image_url"
     t.string   "url"
     t.datetime "created_at", null: false
@@ -24,17 +25,9 @@ ActiveRecord::Schema.define(version: 20170425092149) do
 
   create_table "statuses", force: :cascade do |t|
     t.integer  "book_id"
-    t.integer  "user_id"
     t.integer  "status_code"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "user_books", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
