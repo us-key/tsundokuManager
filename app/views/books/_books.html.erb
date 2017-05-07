@@ -1,0 +1,44 @@
+<%if books.present?%>
+  <p>
+    <%case status%>
+    <%when 9 then%>
+      読了
+    <%when 7 then%>
+      読書開始
+    <%when 3 then%>
+      購入済
+    <%when 0 then%>
+    　気になる
+    <%else%>
+    <%end%>
+    ：
+    <%=books.count%>
+  </p>
+  <table>
+    <thead>
+      <th><th>タイトル</th><th>著者</th><th>ISBN</th><th>状態</th>
+    </thead>
+    <tbody>
+      <%books.each do |book|%>
+        <tr id="book-<%=book.id%>">
+          <td>
+            <%=link_to (image_tag(book.image_url, style: "width: 35px;height: 50px;display: inline-block;")), book.url%>
+          </td>
+          <td>
+            <%=book.title%>
+          </td>
+          <td>
+            <%=book.author%>
+          </td>
+          <td>
+            <%=book.isbn%>
+          </td>
+          <td>
+            <p>登録から<%=(Time.now - book.statuses.find_by(status_code: status).created_at).to_i/(60*60*24)%>日</p>
+          </td>
+          </div>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+<%end%>

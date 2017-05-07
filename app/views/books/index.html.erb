@@ -1,53 +1,8 @@
 <h1>Book#index</h1>
 <p>Find me in app/views/book/index.html.erb</p>
 <p>登録数：<%=@books.count%></p>
-
-<!-- TODO いずれ共通化してコードを簡潔にする -->
-<%if @books_status_9.present?%>
-  <p>読了：<%=@books_status_9.count%></p>
-  <table>
-    <thead>
-      <th><th>タイトル</th><th>著者</th><th>ISBN</th><th>状態</th>
-    </thead>
-    <tbody>
-      <%=render @books_status_9%>
-    </tbody>
-  </table>
-<%end%>
-<%if @books_status_7.present?%>
-  <p>読書開始：<%=@books_status_7.count%></p>
-  <table>
-    <thead>
-      <th><th>タイトル</th><th>著者</th><th>ISBN</th><th>状態</th>
-    </thead>
-    <tbody>
-      <%=render @books_status_7%>
-    </tbody>
-  </table>
-<%end%>
-<%if @books_status_3.present?%>
-  <p>購入済：<%=@books_status_3.count%></p>
-  <table>
-    <thead>
-      <th><th>タイトル</th><th>著者</th><th>ISBN</th><th>状態</th>
-    </thead>
-    <tbody>
-      <%=render @books_status_3%>
-    </tbody>
-  </table>
-<%end%>
-<%if @books_status_0.present?%>
-  <p>気になる：<%=@books_status_0.count%></p>
-  <table>
-    <thead>
-      <th><th>タイトル</th><th>著者</th><th>ISBN</th><th>状態</th>
-    </thead>
-    <tbody>
-      <%=render @books_status_0%>
-    </tbody>
-  </table>
-<%end%>
-
-
-
+<%=render partial: 'books', locals: {books: @books_status_9, status: 9}%>
+<%=render partial: 'books', locals: {books: @books_status_7, status: 7}%>
+<%=render partial: 'books', locals: {books: @books_status_3, status: 3}%>
+<%=render partial: 'books', locals: {books: @books_status_0, status: 0}%>
 <%=link_to "登録する本を探す", '/books/search'%>
