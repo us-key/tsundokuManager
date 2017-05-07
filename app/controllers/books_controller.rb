@@ -104,4 +104,21 @@ class BooksController < ApplicationController
     end
   end
 
+
+  def status_update
+    logger.debug(params[:book_id])
+
+    status = Status.new(
+      book_id: params[:book_id],
+      status_code: params[:status])
+    if status.save
+      # 登録成功
+    else
+      # 登録失敗
+    end
+    flash[:success] = "更新しました。"
+    # TODO 一旦リダイレクトで実装。最終的にはajax化する(一覧部分再描画)
+    redirect_to books_path
+  end
+
 end
