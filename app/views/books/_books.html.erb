@@ -37,27 +37,33 @@
             <p>登録から<%=(Time.now - book.statuses.find_by(status_code: status).created_at).to_i/(60*60*24)%>日</p>
           </td>
           <td>
-            <%=link_to '購入済', books_update_path(
-              :book_id => book.id,
-              :status => 3), # 購入済
-              :method => :post,
-              data: {confirm: "「購入済」に更新します."},
-              class: 'update_status',
-              remote: true%>
-            <%=link_to '読書開始', books_update_path(
-              :book_id => book.id,
-              :status => 7), # 読書開始
-              :method => :post,
-              data: {confirm: "「読書開始」に更新します."},
-              class: 'update_status',
-              remote: true%>
-            <%=link_to '読了', books_update_path(
-              :book_id => book.id,
-              :status => 9), # 読書開始
-              :method => :post,
-              data: {confirm: "「読了」に更新します."},
-              class: 'update_status',
-              remote: true%>
+            <%if status < 3%>
+              <%=link_to '購入済', books_update_path(
+                :book_id => book.id,
+                :status => 3), # 購入済
+                :method => :post,
+                data: {confirm: "「購入済」に更新します."},
+                class: 'update_status',
+                remote: true%>
+            <%end%>
+            <%if status < 7%>
+              <%=link_to '読書開始', books_update_path(
+                :book_id => book.id,
+                :status => 7), # 読書開始
+                :method => :post,
+                data: {confirm: "「読書開始」に更新します."},
+                class: 'update_status',
+                remote: true%>
+            <%end%>
+            <%if status < 9%>
+              <%=link_to '読了', books_update_path(
+                :book_id => book.id,
+                :status => 9), # 読書開始
+                :method => :post,
+                data: {confirm: "「読了」に更新します."},
+                class: 'update_status',
+                remote: true%>
+            <%end%>
           </td>
           </div>
         </tr>
