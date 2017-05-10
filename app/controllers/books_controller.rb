@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
   def index
     # 本来はログインユーザーで絞る
     @books = User.find(1).books
