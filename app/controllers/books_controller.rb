@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def index
     # 本来はログインユーザーで絞る
-    @books = User.find(1).books
+    @books = current_user.books
     @books_status_0 = [] # 気になる
     @books_status_3 = [] # 購入済
     @books_status_7 = [] # 読書開始
@@ -65,18 +65,16 @@ class BooksController < ApplicationController
 
   def create
     logger.debug(params[:status])
-    # TODO 本来はログインユーザーを取得する
-    user = User.find(1)
 
     respond_to do |format|
-      if Book.find_by(user_id: user.id, isbn: params[:isbn]).present?
+      if Book.find_by(user_id: current_user.id, isbn: params[:isbn]).present?
         #登録済
         logger.debug("登録済")
         flash[:danger] = "本棚に登録済みです"
         format.js
       else
         book = Book.new(
-          user_id: user.id,
+          user_id: current_user.id,
           isbn: params[:isbn],
           title: params[:title],
           author: params[:author],

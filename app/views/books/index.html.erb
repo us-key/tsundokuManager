@@ -1,8 +1,13 @@
-<h1>Book#index</h1>
-<p>Find me in app/views/book/index.html.erb</p>
-<p>登録数：<%=@books.count%></p>
-<%=render partial: 'books', locals: {books: @books_status_9, status: 9}%>
-<%=render partial: 'books', locals: {books: @books_status_7, status: 7}%>
-<%=render partial: 'books', locals: {books: @books_status_3, status: 3}%>
-<%=render partial: 'books', locals: {books: @books_status_0, status: 0}%>
-<%=link_to "登録する本を探す", '/books/search'%>
+<ul class="nav nav-tabs" id="top">
+  <li role="presentation" class="active"><a href="#top"><b>本棚</b><span class="badge"><%=@books.count%></span></a><li>
+  <li role="presentation"><a href="#books7"><%=t 'label.status.s7'%><span class="badge"><%=@books_status_7.count%></span></a><li>
+  <li role="presentation"><a href="#books3"><%=t 'label.status.s3'%><span class="badge"><%=@books_status_3.count%></span></a><li>
+  <li role="presentation"><a href="#books0"><%=t 'label.status.s0'%><span class="badge"><%=@books_status_0.count%></span></a><li>
+  <li role="presentation"><a href="#books9"><%=t 'label.status.s9'%><span class="badge"><%=@books_status_9.count%></span></a><li>
+  <li role="presentation"><%=link_to "登録する本を探す", '/books/search'%><li>
+</ul>
+
+<div id="books7"><%=render partial: 'books', locals: {books: @books_status_7, status: 7}%></div>
+<div id="books3"><%=render partial: 'books', locals: {books: @books_status_3, status: 3}%></div>
+<div id="books0"><%=render partial: 'books', locals: {books: @books_status_0, status: 0}%></div>
+<div id="books9"><%=render partial: 'books', locals: {books: @books_status_9, status: 9}%></div>

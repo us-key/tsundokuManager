@@ -27,3 +27,9 @@ ja:
         password: パスワード
         password_confirmation: パスワード(確認)
         remmber_me: パスワードを記憶
+  label:
+    status:
+      s9: 読了
+      s7: 読書中
+      s3: 購入済
+      s0: 気になる

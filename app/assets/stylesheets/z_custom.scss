@@ -1,6 +1,9 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -16,4 +19,301 @@
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+/* universal */
+
+body {
+  padding-top: 60px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+.pos-left {
+  float: right;
+  padding-top: 15px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  //margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+//  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  //margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#char-count {
+  text-align: right;
+  margin-right: 5px;
+}
+
+/* books-table */
+table.table-fixed {
+  width: 100%;
+  table-layout: fixed;
+  th.col1 {
+    width: 88px;
+  }
+  th.col3 {
+    width: 66px;
+  }
+}
+p {
+  margin-bottom: 0px;
+}
+.label-center {
+  text-align: center;
+}
+.search-btn {
+  width: 70px;
+}
+.tag-btn {
+  margin: 0.5px;
+}
+
+
+div.more-tags {
+  display: none;
+}
+
+/* posts */
+
+.posts {
+  td.content {
+    border-top: 2px solid #e8e8e8;
+    padding: 2px 8px 1px 8px;
+
+  }
+}
+.posts-info {
+  background: #fcfcfc;
+  td.timestamp {
+    color: $gray-light;
+    width: 56px;
+  }
+  td.search-timestamp {
+    color: $gray-light;
+    width: 122px;
+  }
+  td.content-destroy {
+    width: 38px;
+  }
+  td.tags, td.timestamp, td.content-destroy, td.search-timestamp {
+    border-top-color: #ffffff;
+    padding: 1px 8px 2px 8px;
+  }
+
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+.pain {
+  padding: 1px;
+}
+
+/* bootstrap上書き */
+.form-inline {
+  div {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.panel-body {
+  padding: 0px;
+}
+
+.panel {
+  margin-bottom: 0px;
+}
+
+.navbar {
+  margin-bottom: 5px;
+}
+
+.alert {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 3px;
+  padding: 3px;
+}
+
+.dropdown-menu {
+  min-width: inherit;
+}
+
+.dropdown-menu > li > a {
+  padding: 3px 8px;
+}
+
+/* suggest.js */
+#suggest {
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCFF;
+    font-size: 90%;
+    width: 200px;
+}
+#suggest div {
+    display: block;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#suggest div.select{ /* キー上下で選択した場合のスタイル */
+    color: #FFFFFF;
+    background-color: #3366FF;
+}
+#suggest div.over{ /* マウスオーバ時のスタイル */
+    background-color: #99CCFF;
 }
