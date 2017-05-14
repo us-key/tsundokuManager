@@ -24,7 +24,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 80px;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 10px;
@@ -192,7 +192,11 @@ input {
   margin-right: 5px;
 }
 
-/* books-table */
+/* books */
+div#books {
+  position: static;
+  top: 140px;
+}
 table.table-fixed {
   width: 100%;
   table-layout: fixed;
@@ -203,62 +207,21 @@ table.table-fixed {
     width: 66px;
   }
 }
-p {
-  margin-bottom: 0px;
+
+div.adj {
+  padding-top: 100px;
 }
-.label-center {
-  text-align: center;
-}
-.search-btn {
-  width: 70px;
-}
-.tag-btn {
-  margin: 0.5px;
+div.jmp-to {
+  margin-top: -100px;
+  padding-top: 100px;
 }
 
-
-div.more-tags {
-  display: none;
-}
-
-/* posts */
-
-.posts {
-  td.content {
-    border-top: 2px solid #e8e8e8;
-    padding: 2px 8px 1px 8px;
-
-  }
-}
-.posts-info {
-  background: #fcfcfc;
-  td.timestamp {
-    color: $gray-light;
-    width: 56px;
-  }
-  td.search-timestamp {
-    color: $gray-light;
-    width: 122px;
-  }
-  td.content-destroy {
-    width: 38px;
-  }
-  td.tags, td.timestamp, td.content-destroy, td.search-timestamp {
-    border-top-color: #ffffff;
-    padding: 1px 8px 2px 8px;
-  }
-
-}
-
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
-
-.pain {
-  padding: 1px;
+/* navigation */
+nav.navbar-fixed-top2 {
+  position: fixed;
+  top: 49px;
+  right: 0px;
+  left: 0px;
 }
 
 /* bootstrap上書き */
@@ -282,6 +245,8 @@ aside {
 }
 
 .alert {
+  position: fixed;
+  top: 55px;
   margin-left: -15px;
   margin-right: -15px;
   margin-bottom: 3px;
@@ -294,26 +259,4 @@ aside {
 
 .dropdown-menu > li > a {
   padding: 3px 8px;
-}
-
-/* suggest.js */
-#suggest {
-    position: absolute;
-    background-color: #FFFFFF;
-    border: 1px solid #CCCCFF;
-    font-size: 90%;
-    width: 200px;
-}
-#suggest div {
-    display: block;
-    width: 200px;
-    overflow: hidden;
-    white-space: nowrap;
-}
-#suggest div.select{ /* キー上下で選択した場合のスタイル */
-    color: #FFFFFF;
-    background-color: #3366FF;
-}
-#suggest div.over{ /* マウスオーバ時のスタイル */
-    background-color: #99CCFF;
 }

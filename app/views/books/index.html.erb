@@ -1,13 +1,32 @@
-<ul class="nav nav-tabs" id="top">
-  <li role="presentation" class="active"><a href="#top"><b>本棚</b><span class="badge"><%=@books.count%></span></a><li>
+<nav class="navbar navbar-default navbar-fixed-top2">
+  <div class="container">
+    <div class="nabvar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#top">
+        本棚<span class="badge"><%=@books.count%></span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="top">
+
+<ul class="nav navbar-nav">
+  <!--<li role="presentation" class="active"><a href="#top"><b>本棚</b><span class="badge"><%=@books.count%></span></a><li>-->
   <li role="presentation"><a href="#books7"><%=t 'label.status.s7'%><span class="badge"><%=@books_status_7.count%></span></a><li>
   <li role="presentation"><a href="#books3"><%=t 'label.status.s3'%><span class="badge"><%=@books_status_3.count%></span></a><li>
   <li role="presentation"><a href="#books0"><%=t 'label.status.s0'%><span class="badge"><%=@books_status_0.count%></span></a><li>
   <li role="presentation"><a href="#books9"><%=t 'label.status.s9'%><span class="badge"><%=@books_status_9.count%></span></a><li>
   <li role="presentation"><%=link_to "登録する本を探す", '/books/search'%><li>
 </ul>
-
-<div id="books7"><%=render partial: 'books', locals: {books: @books_status_7, status: 7}%></div>
-<div id="books3"><%=render partial: 'books', locals: {books: @books_status_3, status: 3}%></div>
-<div id="books0"><%=render partial: 'books', locals: {books: @books_status_0, status: 0}%></div>
-<div id="books9"><%=render partial: 'books', locals: {books: @books_status_9, status: 9}%></div>
+</div>
+</nav>
+<div id="books">
+  <!--各divをページ内ジャンプ位置調整用のdivで挟む-->
+  <div class="adj"><div id="books7" class="jmp-to"><%=render partial: 'books', locals: {books: @books_status_7, status: 7}%></div></div>
+  <div class="adj"><div id="books3" class="jmp-to"><%=render partial: 'books', locals: {books: @books_status_3, status: 3}%></div></div>
+  <div class="adj"><div id="books0" class="jmp-to"><%=render partial: 'books', locals: {books: @books_status_0, status: 0}%></div></div>
+  <div class="adj"><div id="books9" class="jmp-to"><%=render partial: 'books', locals: {books: @books_status_9, status: 9}%></div></div>
+</div>
