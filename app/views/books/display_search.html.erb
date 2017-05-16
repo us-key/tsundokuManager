@@ -1,10 +1,12 @@
-<h1>Book#display_search</h1>
-<p>Find me in app/views/book/index.html.erb</p>
+<nav class="navbar navbar-default navbar-fixed-top2">
+  <div class="container">
+    <%= render 'search_form', class: 'navbar-form'%>
+  </div>
+</nav>
 <!-- メモ作成フォーム -->
-<%= render 'search_form'%>
-<h2>
+<p>
   検索結果：
   <span id="search_result_count">0</span>件
-  <span id="total_count"></span
-</h2>
+  <span id="total_count"></span>
+</p>
 <div id="search_result"></div>

@@ -60,7 +60,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  //font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -154,10 +154,11 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  //width: 100%;
   //margin-bottom: 15px;
   @include box_sizing;
 }
+
 
 input {
 //  height: auto !important;
@@ -206,14 +207,25 @@ table.table-fixed {
   th.col3 {
     width: 66px;
   }
+  th.col4 {
+    width: 88px;
+  }
 }
-
-div.adj {
-  padding-top: 100px;
-}
-div.jmp-to {
-  margin-top: -100px;
-  padding-top: 100px;
+div{
+  #books {
+    padding-top: 100px;
+  }
+  #top {
+    margin-top: -200px;
+    padding-top: 100px;
+  }
+  .adj {
+    padding-top: 100px;
+  }
+  .jmp-to {
+    margin-top: -200px;
+    padding-top: 100px;
+  }
 }
 
 /* navigation */
@@ -222,16 +234,17 @@ nav.navbar-fixed-top2 {
   top: 49px;
   right: 0px;
   left: 0px;
+  z-index: 99;
 }
 
 /* bootstrap上書き */
 .form-inline {
+  padding-top: 9px;
   div {
     display: inline-block;
-    vertical-align: middle;
+
   }
 }
-
 .panel-body {
   padding: 0px;
 }
@@ -246,17 +259,31 @@ nav.navbar-fixed-top2 {
 
 .alert {
   position: fixed;
-  top: 55px;
-  margin-left: -15px;
-  margin-right: -15px;
+  width: 150%;
+  top: 49px;
+  margin-left: -100px;
+  padding-left: 100px;
+  margin-right: -100px;
+  padding-right: 0px;
   margin-bottom: 3px;
-  padding: 3px;
+  z-index: 100;
+}
+
+.alert-notice, .alert-alert {
+  background-color: #dff0d8;
 }
 
 .dropdown-menu {
   min-width: inherit;
+  left: auto;
+  right: 10px;
 }
 
 .dropdown-menu > li > a {
   padding: 3px 8px;
+}
+
+input[type="checkbox"] {
+  // margin-left: -20pxが消せないため調整
+  left: 20px;
 }

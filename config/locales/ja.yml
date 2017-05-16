@@ -23,10 +23,15 @@ ja:
   helpers:
     label:
       user:
+        name: 名前
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
         remmber_me: パスワードを記憶
+        email_changed: メールアドレス(変更後)
+        password_changed: パスワード(変更後)
+        password_changed_confirmation: パスワード(変更後)(確認)
+        current_password: パスワード(変更前)
   label:
     status:
       s9: 読了

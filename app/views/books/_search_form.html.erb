@@ -1,21 +1,8 @@
-<%= form_tag('/books/search', :remote => true) do%>
-  <table id="post-form">
-    <tr>
-      <td id="input-title">
-        <div class="field">
-          <%=text_field_tag(:book, "", :name => 'title', :class => 'input-sm', :tabindex => '1', :placeholder => 'タイトル')%>
-        </div>
-      </td>
-      <td id="input-author">
-        <div class="field">
-          <%=text_field_tag(:book, "", :name => 'author', :class => 'input-sm', :tabindex => '2', :placeholder => '著者')%>
-        </div>
-      </td>
-      <td id="submit-post">
-        <div class="actions">
-          <%=submit_tag("検索", :class => 'btn btn-sm', :tabindex => '3')%>
-        </div>
-      </td>
-    </tr>
-  </table>
+<%= form_tag('/books/search', :remote => true, :class => 'form-inline') do%>
+  本の登録
+  <div class='form-group'>
+    <%=text_field_tag(:book, "", :name => 'author', :class => 'input-sm', :tabindex => '2', :placeholder => '著者')%>
+  </div>
+  <div class='form-group'><%=text_field_tag(:book, "", :name => 'title', :class => 'input-sm', :tabindex => '1', :placeholder => 'タイトル')%></div>
+  <div class='form-group'><%=submit_tag("検索", :class => 'btn btn-sm', :tabindex => '3')%></div>
 <%end%>
