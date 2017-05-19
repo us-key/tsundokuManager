@@ -32,6 +32,10 @@ ja:
         password_changed: パスワード(変更後)
         password_changed_confirmation: パスワード(変更後)(確認)
         current_password: パスワード(変更前)
+        alert_days_status_7: 読書中
+        alert_days_status_3: 購入済
+        alert_days_status_0: 気になる
+
   label:
     status:
       s9: 読了
