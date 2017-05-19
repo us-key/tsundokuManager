@@ -21,7 +21,11 @@
         </script>
         <tr id="book-<%=book.id%>">
           <td>
-            <%=link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url%>
+            <%if book.image_url.present?%>
+              <%=link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url%>
+            <%else%>
+              <%=link_to "no image", book.url%>
+            <%end%>
           </td>
           <td>
             <h4><%=book.title%></h4>
