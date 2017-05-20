@@ -6,6 +6,6 @@
 <%end%>
 // flashメッセージを出力し、3秒で消す
 <%flash.each do |message_type, message|%>
-  $('#flash-message').html('<div class="alert alert-<%=message_type%>"><%=message%></div>');
+  $('#flash-message').html('<div class="alert alert-<%=message_type%>"><%=message.html_safe%></div>');
 <%end%>
 $('.alert').delay(2500).fadeOut(500);

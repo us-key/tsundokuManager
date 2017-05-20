@@ -9,8 +9,7 @@ class BooksController < ApplicationController
     @books_status_9 = [] # 読了
     # 最も進んだステータスを取りに行く
     @books.each do |book|
-      max_status = book.statuses.order("status_code desc").limit(1)
-      case max_status[0].status_code
+      case book.get_max_status
       when 9 then
         @books_status_9 << book
       when 7 then
@@ -29,20 +28,37 @@ class BooksController < ApplicationController
   end
 
   def search
+    # jsでのエラー判別用
+    @error_flg = 0
+
     if params[:title].present? || params[:author].present?
       # デバッグログ出力
       Amazon::Ecs.debug = true
 
-      books = Amazon::Ecs.item_search(
-        '', #keyword:titleとauthor個別で検索するためブランク
-        title: params[:title],
-        author: params[:author],
-        search_index: 'Books',
-        dataType: 'script',
-        response_group: 'ItemAttributes, Images',
-        country: 'jp',
-        power: 'Not kindle'
-      )
+      # 503エラーが理由なくしょっちゅう起きるためリトライする
+      retry_count = 0
+
+      begin
+        books = Amazon::Ecs.item_search(
+          '', #keyword:titleとauthor個別で検索するためブランク
+          title: params[:title],
+          author: params[:author],
+          search_index: 'Books',
+          dataType: 'script',
+          response_group: 'ItemAttributes, Images',
+          country: 'jp',
+          power: 'Not kindle'
+        )
+      rescue
+        retry_count += 1
+        if retry_count < 5
+          sleep(1) # Amazonの設定上1秒待てばいいはずなので1秒だけ待つ
+          retry
+        else
+          flash[:error] = "エラーが発生しました。しばらく置いてから再実行してください。"
+          @error_flg = 1
+        end
+      end
 
       @books = []
       books.items.each do |item|
@@ -56,6 +72,12 @@ class BooksController < ApplicationController
         @books << book
       end
       @totalCount = books.total_results
+
+      # 検索結果0件
+      if @totalCount == 0
+        flash[:danger] = "条件に該当する本がありません。"
+        # 検索結果は返ってくるため、検索結果一覧を再描画するためエラーとしては扱わない
+      end
     end
 
     respond_to do |format|

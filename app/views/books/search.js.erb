@@ -1,9 +1,15 @@
 var searchResultHtml = "";
 var count = 0;
-<%if @books.present?%>
-  searchResultHtml = '<%=j render :partial => "books_searched", :collections => @books%>';
-  count = <%=@books.length%>
+<%if @error_flg != 1%>
+  <%if @books.present?%>
+    searchResultHtml = '<%=j render :partial => "books_searched", :collections => @books%>';
+    count = <%=@books.length%>
+  <%end%>
+  $('#search_result').html(searchResultHtml);
+  $('#search_result_count').html(count);
+  $('#total_count').html("/" + <%=@totalCount%> + "件");
 <%end%>
-$('#search_result').html(searchResultHtml);
-$('#search_result_count').html(count);
-$('#total_count').html("/" + <%=@totalCount%> + "件");
+<%flash.each do |message_type, message|%>
+  $('#flash-message').html('<div class="alert alert-<%=message_type%>"><%=message.html_safe%></div>');
+<%end%>
+$('.alert').delay(2500).fadeOut(500);
