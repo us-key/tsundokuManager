@@ -15,5 +15,8 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
+  get 'users/setting', to: 'users#display_setting'
+  patch 'users/setting', to: 'users#update_setting'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

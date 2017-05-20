@@ -20,7 +20,7 @@
     <div class="container">
       <div id="flash-message">
         <%flash.each do |message_type, message|%>
-          <div class="alert alert-<%=message_type%>"><%=message%></div>
+          <div class="alert alert-<%=message_type%>"><%=message.html_safe%></div>
         <%end%>
       </div>
       <%= yield %>

@@ -10,6 +10,6 @@ var count = 0;
   $('#total_count').html("/" + <%=@totalCount%> + "件");
 <%end%>
 <%flash.each do |message_type, message|%>
-  $('#flash-message').html('<div class="alert alert-<%=message_type%>"><%=message%></div>');
+  $('#flash-message').html('<div class="alert alert-<%=message_type%>"><%=message.html_safe%></div>');
 <%end%>
 $('.alert').delay(2500).fadeOut(500);

@@ -1,0 +1,17 @@
+<h2>Setting</h2>
+
+<%= form_for(@user, url: users_setting_path) do |f| %>
+
+  <p>各ステータスの状態で何日そのままにしておいたらアラートを出すかを設定します。</p>
+
+  <div class="form-group"><%= f.label :alert_days_status_0 %><br />
+  <%= f.text_field :alert_days_status_0, :autofocus => true, class: 'form-control' %></div>
+
+  <div class="form-group"><%= f.label :alert_days_status_3 %><br />
+  <%= f.text_field :alert_days_status_3, class: 'form-control' %></div>
+
+  <div class="form-group"><%= f.label :alert_days_status_7 %><br />
+  <%= f.text_field :alert_days_status_7, class: 'form-control' %></div>
+
+  <div><%= f.submit "設定", class: 'btn btn-default' %></div>
+<% end %>

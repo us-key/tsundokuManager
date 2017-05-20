@@ -9,8 +9,7 @@ class BooksController < ApplicationController
     @books_status_9 = [] # 読了
     # 最も進んだステータスを取りに行く
     @books.each do |book|
-      max_status = book.statuses.order("status_code desc").limit(1)
-      case max_status[0].status_code
+      case book.get_max_status
       when 9 then
         @books_status_9 << book
       when 7 then
