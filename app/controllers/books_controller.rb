@@ -1,8 +1,18 @@
 class BooksController < ApplicationController
 
   def index
-    # 本来はログインユーザーで絞る
-    @books = current_user.books
+    # 最も進んだステータスの登録日が古い順にソート
+    @books = current_user.books.find_by_sql( \
+      ['select b.* from books b, statuses s1
+        where b.id = s1.book_id
+        and   s1.status_code = (
+          select max(status_code) from statuses s2
+          where s2.book_id = s1.book_id
+          group by s2.book_id
+        )
+        order by s1.created_at;
+        '])
+
     @books_status_0 = [] # 気になる
     @books_status_3 = [] # 購入済
     @books_status_7 = [] # 読書開始
