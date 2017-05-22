@@ -2,6 +2,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 
+  skip_before_action :authenticate_action
+
   # You should also create an action method in this controller like this:
   def twitter
     @user = User.find_for_twitter_oauth(request.env["omniauth.auth"], current_user)

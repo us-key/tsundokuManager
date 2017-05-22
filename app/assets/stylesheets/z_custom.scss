@@ -260,12 +260,10 @@ nav.navbar-fixed-top2 {
 
 .alert {
   position: fixed;
-  width: 150%;
+  width: 100%;
   top: 49px;
-  margin-left: -100px;
-  padding-left: 100px;
-  margin-right: -100px;
-  padding-right: 0px;
+  left: 0px;
+  right: 0px;
   margin-bottom: 3px;
   z-index: 100;
 }
