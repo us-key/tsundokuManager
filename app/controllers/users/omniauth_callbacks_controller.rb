@@ -6,6 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # You should also create an action method in this controller like this:
   def twitter
+    logger.debug("omniauth_callbacks_controller.twitter start!")
     @user = User.find_for_twitter_oauth(request.env["omniauth.auth"], current_user)
 
     if @user.persisted?

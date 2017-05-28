@@ -32,7 +32,8 @@ class ApplicationController < ActionController::Base
         books.each do |book|
           max_status = book.get_max_status
           # アラート：読了は除く
-          if max_status != 9 && (current_user.send("alert_days_status_" + max_status.to_s) < book.get_lapsed_days(max_status))
+          if max_status != 9 && current_user.send("alert_days_status_" + max_status.to_s).present? &&
+            (current_user.send("alert_days_status_" + max_status.to_s) < book.get_lapsed_days(max_status))
             flash_message = add_message( \
                               flash_message, book.title \
                             + "は「" + t("label.status.s#{max_status}") \
