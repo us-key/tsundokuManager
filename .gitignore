@@ -22,3 +22,6 @@
 
 # Ignore sectet keys file
 .env
+
+# Ignore precompile assets
+/public/assets/*
